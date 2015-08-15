@@ -26,4 +26,13 @@ Usage
 Setup libraries to develop
 ==========================
 
-make bootstrap
+        # Install requirements.txt
+        make bootstrap
+
+To validate your code :
+
+        # Execute pylint
+        make lint
+
+        # Execute unit test
+        make tests

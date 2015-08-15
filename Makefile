@@ -6,6 +6,10 @@ bootstrap :
 install : bootstrap
 	bash scripts/install.sh
 
+.PHONY: lint
+lint :
+	pylint *.py
+
 .PHONY: tests
 tests :
 	python -u -m unittest discover . '*_test.py'
