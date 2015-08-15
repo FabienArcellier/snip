@@ -1,0 +1,29 @@
+Installation
+=============
+
+Install on linux only. It will create the script shortcut in
+/usr/bin
+
+        make install
+
+Usage
+======
+
+        # Save the content of clipboard in
+        # snippet python-test-class
+        snip save python-test-class
+
+        # List all the snippets
+        snip list
+
+        # List the snippets that begin with python
+        snip list python
+
+        # Copy the content of snippet python-test-class
+        # in clipboard
+        snip python-test-class
+
+Setup libraries to develop
+==========================
+
+make bootstrap
