@@ -28,6 +28,18 @@ def get(snippet):
 
     pyperclip.copy(content)
 
+@click.command(name='display')
+@click.argument('snippet')
+def display(snippet):
+    # case : save
+    # snip save python-test
+    # Create a file python-test in ~/.snip
+    # that contains the content of clip board
+    with open(os.path.join(SNIP_DIR, snippet), 'rb') as f:
+        content=f.read()
+
+    print(content)
+
 @click.command(name='save')
 @click.argument('snippet')
 def save(snippet):
@@ -38,6 +50,16 @@ def save(snippet):
     content=pyperclip.paste()
     with open(os.path.join(SNIP_DIR, snippet), 'wb') as f:
         f.write(content)
+
+@click.command(name='remove')
+@click.argument('snippet')
+def remove(snippet):
+    # case : save
+    # snip save python-test
+    # Create a file python-test in ~/.snip
+    # that contains the content of clip board
+    content=pyperclip.paste()
+    os.remove(os.path.join(SNIP_DIR, snippet))
 
 @click.command(name='list')
 @click.argument('snippetpattern', default='')
@@ -52,6 +74,8 @@ def cli_list(snippetpattern):
         print file
 
 cli.add_command(get)
+cli.add_command(display)
+cli.add_command(remove)
 cli.add_command(save)
 cli.add_command(cli_list)
 

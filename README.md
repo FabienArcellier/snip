@@ -21,7 +21,11 @@ Usage
 
         # Copy the content of snippet python-test-class
         # in clipboard
-        snip python-test-class
+        snip get python-test-class
+        
+        snip display python-test-class
+        
+        snip remove python-test-class
 
 Setup libraries to develop
 ==========================
