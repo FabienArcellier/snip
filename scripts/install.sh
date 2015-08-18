@@ -8,8 +8,24 @@ function main
     set -o pipefail
     set -o nounset
 
-    chmod 755 "${SCRIPT_DIR}/../snip.py"
-    ln -s "${SCRIPT_DIR}/../snip.py" "/usr/bin/snip"
+    mkdir -p /usr/lib/snip
+
+    cp -r ${SCRIPT_DIR}/../src/* /usr/lib/snip/
+    chmod 755 "/usr/lib/snip/snip.py"
+
+    if [ -d /etc/bash_completion.d ]
+      then
+      mv "/usr/lib/snip/snip_bashcompletion.sh" "/etc/bash_completion.d/snip"
+      . /etc/bash_completion.d/snip
+      else
+      rm "/usr/lib/snip/snip_bashcompletion.sh"
+    fi
+
+
+    if [ ! -h "/usr/bin/snip" ]
+      then
+      ln -s "/usr/lib/snip/snip.py" "/usr/bin/snip"
+    fi
 }
 
 main "$@"

@@ -8,7 +8,7 @@ install : bootstrap
 
 .PHONY: lint
 lint :
-	pylint *.py
+	pylint src/*.py
 
 .PHONY: tests
 tests :
