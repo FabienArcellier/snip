@@ -5,6 +5,9 @@ Install on linux only. It will create the script shortcut in
 /usr/bin
 
         make install
+        
+To have access to autocomplete, source autocomplete.bash.
+You can add it in your .bashrc.
 
 Usage
 ======
@@ -26,6 +29,9 @@ Usage
         snip display python-test-class
         
         snip remove python-test-class
+        
+Every snippets is stored in your home directory in .snip.
+You can store this directory in git.
 
 Setup libraries to develop
 ==========================
