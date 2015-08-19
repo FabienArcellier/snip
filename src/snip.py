@@ -76,7 +76,7 @@ def cli_list(snippetpattern):
     # Get a list of all files that begins with
     # python
     os.chdir(SNIP_DIR)
-    snippet_files = glob.glob('{0}*'.format(snippetpattern))
+    snippet_files = sorted(glob.glob('{0}*'.format(snippetpattern)))
     for snippet_file in snippet_files:
         print(snippet_file)
 
