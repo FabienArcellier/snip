@@ -20,7 +20,7 @@ def cli():
         os.mkdir(SNIP_DIR)
 
 
-@click.command(name='get')
+@click.command(name='get', help='get snippet into clipboard')
 @click.argument('snippet')
 def get(snippet):
     # case : save
@@ -33,20 +33,17 @@ def get(snippet):
     pyperclip.copy(content)
 
 
-@click.command(name='display')
+@click.command(name='display', help='display a snippet')
 @click.argument('snippet')
 def display(snippet):
     # case : save
     # snip save python-test
     # Create a file python-test in ~/.snip
     # that contains the content of clip board
-    with open(os.path.join(SNIP_DIR, snippet), 'rb') as snippet_file:
-        content = snippet_file.read()
-
-    print(content)
+    printSnippet(snippet_file)
 
 
-@click.command(name='save')
+@click.command(name='save', help='save clipboard content as a snippet')
 @click.argument('snippet')
 def save(snippet):
     # case : save
@@ -58,7 +55,7 @@ def save(snippet):
         snippet_file.write(content)
 
 
-@click.command(name='remove')
+@click.command(name='remove', help='remove a snippet')
 @click.argument('snippet')
 def remove(snippet):
     # case : save
@@ -68,9 +65,10 @@ def remove(snippet):
     os.remove(os.path.join(SNIP_DIR, snippet))
 
 
-@click.command(name='list')
+@click.command(name='list', help='list snippets available')
 @click.argument('snippetpattern', default='')
-def cli_list(snippetpattern):
+@click.option('--display', is_flag=True, help='display snippets content')
+def cli_list(snippetpattern, display):
     # case : list
     # snip list python
     # Get a list of all files that begins with
@@ -78,8 +76,19 @@ def cli_list(snippetpattern):
     os.chdir(SNIP_DIR)
     snippet_files = sorted(glob.glob('{0}*'.format(snippetpattern)))
     for snippet_file in snippet_files:
-        print(snippet_file)
+        if display:
+            print('-----------')
+            click.echo(click.style(snippet_file, fg="green"))
+            print('-----------')
+            printSnippet(snippet_file)
+        else:
+            print(snippet_file)
 
+def printSnippet(snippet):
+    with open(os.path.join(SNIP_DIR, snippet), 'rb') as snippet_file:
+        content = snippet_file.read()
+
+    print(content)
 
 cli.add_command(get)
 cli.add_command(display)
