@@ -42,6 +42,12 @@ def display(snippet):
     # that contains the content of clip board
     printSnippet(snippet_file)
 
+@click.command(name='edit', help='edit a snippet')
+@click.argument('snippet')
+def edit(snippet):
+    # case : edit
+    # snip edit python-test
+    click.edit(filename=os.path.join(SNIP_DIR, snippet))
 
 @click.command(name='save', help='save clipboard content as a snippet')
 @click.argument('snippet')
@@ -92,9 +98,11 @@ def printSnippet(snippet):
 
 cli.add_command(get)
 cli.add_command(display)
+cli.add_command(edit)
 cli.add_command(remove)
 cli.add_command(save)
 cli.add_command(cli_list)
+
 
 if __name__ == '__main__':
     cli()

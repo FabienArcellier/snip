@@ -22,14 +22,21 @@ Usage
     # List all the snippets
     snip list
 
-    # List the snippets that begin with python
+    # List the snippets that begin by python
     snip list python
+
+    # List and display snippets that begin by python
+    snip list --display python
 
     # Copy the content of snippet python-test-class
     # in clipboard
     snip get python-test-class
 
+    # Display a specific snippet
     snip display python-test-class
+
+    # Edit a snippet
+    snip edit python-test-class
 
     snip remove python-test-class
 
