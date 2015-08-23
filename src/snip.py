@@ -40,7 +40,7 @@ def display(snippet):
     # snip save python-test
     # Create a file python-test in ~/.snip
     # that contains the content of clip board
-    printSnippet(snippet_file)
+    printSnippet(snippet)
 
 @click.command(name='edit', help='edit a snippet')
 @click.argument('snippet')
