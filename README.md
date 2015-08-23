@@ -74,3 +74,7 @@ To validate your code :
 
     # Execute unit test
     make tests
+
+To build a release package:
+
+    make release
