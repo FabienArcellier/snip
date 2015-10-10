@@ -73,7 +73,7 @@ def remove(snippet):
 
 @click.command(name='list', help='list snippets available')
 @click.argument('snippetpattern', default='')
-@click.option('--display', is_flag=True, help='display snippets content')
+@click.option('--display', '-d', is_flag=True, help='display snippets content')
 def cli_list(snippetpattern, display):
     # case : list
     # snip list python
